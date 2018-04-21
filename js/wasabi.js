@@ -1,11 +1,17 @@
-jQuery(document).ready(function($) {
-  // Store our modal trigger DOM element.
-  const clientModalTrigger = document.querySelector(".clients-link");
+(function($) {
+  $(window).load(function() {
+    // Store our modal trigger DOM element.
+    const clientModalTriggers = document.querySelectorAll(".clients-link");
+    vex.defaultOptions.closeAllOnPopState = false;
 
-  // On click, fire the modal.
-  clientModalTrigger.addEventListener("click", () => {
-    // This delay prevents the click from auto-closing the modal.
-    setTimeout(() => {
+    // On click, fire the modal.
+    clientModalTriggers.forEach(trigger => {
+      trigger.addEventListener("click", () => {
+        triggerVex();
+      }); // trigger.click()
+    }); // Triggers.forEach()
+
+    function triggerVex() {
       vex.dialog.prompt({
         className: "vex-theme-default",
         unsafeMessage: `
@@ -16,14 +22,14 @@ jQuery(document).ready(function($) {
         placeholder: "20180703kline",
         buttons: [$.extend({}, vex.dialog.buttons.YES, { text: "Submit" })],
         callback: function(value) {
-           if (value) {
+          if (value) {
             location.href =
               "http://www.wasabiphotography.com/galleries/" +
               document.querySelector(".vex-dialog-prompt-input").value;
           }
           return false;
-        }
-      });
-    }, 250);
+        } // callback
+      }); // vex.dialog.prompt
+    }
   });
-});
+})(jQuery);
