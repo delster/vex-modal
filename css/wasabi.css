@@ -8,12 +8,20 @@
   border-radius: 0;
   box-shadow: 0px 0px 22px 15px rgba(0, 0, 0, 0.3);
 }
+.vex-content #close-vex {
+  content: 'X';
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 44px;
+}
 .vex-content h6 {
   font-family: 'Lora', Georgia, "Times New Roman", serif;
   font-size: 38px;
-  font-weight: 400px;
+  font-weight: 400;
   line-height: 1.5em;
   letter-spacing: 1px;
+  padding-top: 0;
   text-align: center;
 }
 .vex-content h6::after {
